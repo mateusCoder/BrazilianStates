@@ -1,0 +1,47 @@
+package br.com.compass.brazilianStates.controller.dto;
+
+import br.com.compass.brazilianStates.model.State;
+import br.com.compass.brazilianStates.model.TypeRegion;
+
+public class StateDTO {
+
+	private Long id;
+	private String name;
+	private TypeRegion region = TypeRegion.NORTE; //Get back later to explore enum parameter
+	private int population;
+	private String capital;
+	private double area;
+	
+	public StateDTO(State state) {
+		this.id = state.getId();
+		this.name = state.getName();
+		this.region = region.NORTE; //Get back later to explore enum parameter
+		this.population = 
+	}
+	
+	private Long getId() {
+		return id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public TypeRegion getRegion() {
+		return region;
+	}
+	
+	public int getPopulation() {
+		return population;
+	}
+	
+	public String getCapital() {
+		return capital;
+	}
+	
+	public double getArea() {
+		return area;
+	}
+	
+	
+}

@@ -3,7 +3,7 @@ package br.com.compass.brazilianStates.model;
 public class State {
 	private Long id;
 	private String name;
-	private TypeRegion region = TypeRegion.NORTE;
+	private TypeRegion region = TypeRegion.NORTE; //Get back later to explore enum parameter
 	private int population;
 	private String capital;
 	private double area;

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.compass.brazilianStates.controller.dto.StateDTO;
 import br.com.compass.brazilianStates.model.State;
 import br.com.compass.brazilianStates.model.TypeRegion;
 
@@ -13,9 +14,9 @@ import br.com.compass.brazilianStates.model.TypeRegion;
 public class StateController {
 	
 	@RequestMapping("/states")
-	public List<State> list(){
+	public List<StateDTO> list(){
 		State state = new State("Rio Grande do Norte", TypeRegion.NORDESTE, 3409000, "Natal", 52.797);
 		
-		return Arrays.asList(state);
+		return StateDTO.convertToDto(Arrays.asList(state));
 	}
 }
