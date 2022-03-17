@@ -20,6 +20,18 @@ public class State {
 	private int population;
 	private String capital;
 	private double area;
+	
+	public State() {
+	}
+	
+	public State(String name, TypeRegion region, int population, String capital, double area) {
+		super();
+		this.name = name;
+		this.region = region;
+		this.population = population;
+		this.capital = capital;
+		this.area = area;
+	}
 
 	public Long getId() {
 		return id;

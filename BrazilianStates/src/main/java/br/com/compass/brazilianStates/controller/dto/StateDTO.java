@@ -24,7 +24,7 @@ public class StateDTO {
 		this.area = state.getArea();
 	}
 	
-	private Long getId() {
+	public Long getId() {
 		return id;
 	}
 	

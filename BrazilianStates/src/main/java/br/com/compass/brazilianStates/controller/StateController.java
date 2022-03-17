@@ -1,14 +1,21 @@
 package br.com.compass.brazilianStates.controller;
 
+import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.compass.brazilianStates.controller.dto.StateDTO;
+import br.com.compass.brazilianStates.controller.input.StateInput;
 import br.com.compass.brazilianStates.model.State;
 import br.com.compass.brazilianStates.model.TypeRegion;
 import br.com.compass.brazilianStates.repository.StateRepository;
@@ -30,5 +37,14 @@ public class StateController {
 			List<State> states = stateRepository.findByRegion(region);
 			return StateDTO.convertToDto(states);
 		}
+	}
+	
+	@PostMapping
+	public ResponseEntity<StateDTO> add(@RequestBody StateInput input, UriComponentsBuilder uriBuilder) {
+		State state = input.convertToState(stateRepository);
+		stateRepository.save(state);
+		
+		URI uri = uriBuilder.path("/states/{id}").buildAndExpand(state.getId()).toUri();
+		return ResponseEntity.created(uri).body(new StateDTO(state));
 	}
 }

@@ -9,4 +9,6 @@ import br.com.compass.brazilianStates.model.TypeRegion;
 
 public interface StateRepository  extends JpaRepository<State, Long>{
 	List<State> findByRegion(TypeRegion region);
+
+	State findByName(String name);
 }

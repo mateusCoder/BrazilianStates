@@ -1,0 +1,12 @@
+package br.com.compass.brazilianStates.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.com.compass.brazilianStates.model.State;
+import br.com.compass.brazilianStates.model.TypeRegion;
+
+public interface StateRepository  extends JpaRepository<State, Long>{
+	List<State> findByRegion(TypeRegion region);
+}

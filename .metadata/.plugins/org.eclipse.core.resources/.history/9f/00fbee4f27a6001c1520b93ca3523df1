@@ -1,0 +1,15 @@
+package br.com.compass.brazilianStates.controller.input;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+import br.com.compass.brazilianStates.model.TypeRegion;
+
+public class StateInput {
+	
+	private String name;
+	private TypeRegion region = TypeRegion.NORTE; //Get back later to explore enum parameter
+	private int population;
+	private String capital;
+	private double area; 
+}
