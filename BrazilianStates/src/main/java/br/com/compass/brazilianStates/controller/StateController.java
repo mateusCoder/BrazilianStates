@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,5 +47,11 @@ public class StateController {
 		
 		URI uri = uriBuilder.path("/states/{id}").buildAndExpand(state.getId()).toUri();
 		return ResponseEntity.created(uri).body(new StateDTO(state));
+	}
+	
+	@GetMapping("/{id}")
+	public StateDTO check(@PathVariable Long id) {
+		State state = stateRepository.getById(id);
+		return new StateDTO(state);
 	}
 }
