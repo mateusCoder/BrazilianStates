@@ -1,21 +1,25 @@
 package br.com.compass.brazilianStates.model;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class State {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	
+	@Enumerated(EnumType.STRING)
 	private TypeRegion region = TypeRegion.NORTE; //Get back later to explore enum parameter
 	private int population;
 	private String capital;
 	private double area;
-	
-	public State(String name, TypeRegion region, int population, String capital, double area) {
-		super();
-		this.name = name;
-		this.region = region;
-		this.population = population;
-		this.capital = capital;
-		this.area = area;
-	}
 
 	public Long getId() {
 		return id;
