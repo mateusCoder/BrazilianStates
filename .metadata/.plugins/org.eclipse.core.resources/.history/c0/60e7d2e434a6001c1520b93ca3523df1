@@ -55,16 +55,7 @@ public class StateInput {
 	public State convertToState(StateRepository repository) {
 		State state = repository.findByName(name);
 		return new State(name, region, population, capital, area);
-	}
-
-	public State update(Long id, StateRepository stateRepository) {
-		State state = stateRepository.getById(id);
-		state.setName(this.name);
-		state.setRegion(this.region);
-		state.setPopulation(this.population);
-		state.setCapital(this.capital);
-		state.setArea(this.area);
-		
-		return state;
 	} 
+	
+	
 }

@@ -64,7 +64,8 @@ public class StateInput {
 		state.setPopulation(this.population);
 		state.setCapital(this.capital);
 		state.setArea(this.area);
-		
-		return state;
+		return null;
 	} 
+	
+	
 }
