@@ -1,0 +1,70 @@
+package br.com.compass.brazilianStates.model;
+
+public class State {
+	private Long id;
+	private String name;
+	private TypeRegion region = TypeRegion.NORTE;
+	private int population;
+	private String capital;
+	private double area;
+	
+	public State(String name, TypeRegion region, int population, String capital, double area) {
+		super();
+		this.name = name;
+		this.region = region;
+		this.population = population;
+		this.capital = capital;
+		this.area = area;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public TypeRegion getRegion() {
+		return region;
+	}
+
+	public void setRegion(TypeRegion region) {
+		this.region = region;
+	}
+
+	public int getPopulation() {
+		return population;
+	}
+
+	public void setPopulation(int population) {
+		this.population = population;
+	}
+
+	public String getCapital() {
+		return capital;
+	}
+
+	public void setCapital(String capital) {
+		this.capital = capital;
+	}
+
+	public double getArea() {
+		return area;
+	}
+
+	public void setArea(double area) {
+		this.area = area;
+	}
+	
+	
+	
+}
