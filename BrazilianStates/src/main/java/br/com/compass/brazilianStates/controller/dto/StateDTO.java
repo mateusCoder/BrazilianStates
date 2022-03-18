@@ -3,6 +3,8 @@ package br.com.compass.brazilianStates.controller.dto;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+
 import br.com.compass.brazilianStates.model.State;
 import br.com.compass.brazilianStates.model.TypeRegion;
 
@@ -48,7 +50,7 @@ public class StateDTO {
 		return area;
 	}
 
-	public static List<StateDTO> convertToDto(List<State> state) {
-		return state.stream().map(StateDTO::new).collect(Collectors.toList());
+	public static Page<StateDTO> convertToDto(Page<State> state) {
+		return state.map(StateDTO::new);
 	}
 }

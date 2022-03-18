@@ -9,8 +9,13 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -29,20 +35,21 @@ import br.com.compass.brazilianStates.model.TypeRegion;
 import br.com.compass.brazilianStates.repository.StateRepository;
 
 @RestController
-@RequestMapping("/states")
+@RequestMapping("/api/states")
 public class StateController {
 	
 	@Autowired
 	private StateRepository stateRepository;
 	
 	@GetMapping
-	public List<StateDTO> list(TypeRegion region){	
+	public Page<StateDTO> list(@RequestParam(required = false) TypeRegion region, 
+			@PageableDefault( sort = "id", direction = Direction.ASC, size = 100) Pageable pagination){
 		
 		if(region == null) {
-			List<State> states = stateRepository.findAll();
+			Page<State> states = (Page<State>) stateRepository.findAll(pagination);
 			return StateDTO.convertToDto(states);
 		}else {
-			List<State> states = stateRepository.findByRegion(region);
+			Page<State> states = stateRepository.findByRegion(region, pagination);
 			return StateDTO.convertToDto(states);
 		}
 	}
