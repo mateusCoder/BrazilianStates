@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,6 +46,7 @@ public class StateController {
 	}
 	
 	@PostMapping
+	@Transactional
 	public ResponseEntity<StateDTO> add(@RequestBody StateInput input, UriComponentsBuilder uriBuilder) {
 		State state = input.convertToState(stateRepository);
 		stateRepository.save(state);
@@ -65,5 +67,13 @@ public class StateController {
 		State state = input.update(id, stateRepository);
 		
 		return ResponseEntity.ok(new StateDTO(state));
+	}
+	
+	@DeleteMapping("/{id}")
+	@Transactional
+	public ResponseEntity<?> remove(@PathVariable Long id){
+		stateRepository.deleteById(id);
+		
+		return ResponseEntity.ok().build();
 	}
 }
