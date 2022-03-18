@@ -1,0 +1,5 @@
+package br.com.compass.brazilianStates.config.validation;
+
+public class ErrorValidationHandler {
+
+}

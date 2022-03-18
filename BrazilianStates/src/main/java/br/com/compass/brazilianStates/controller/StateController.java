@@ -3,8 +3,10 @@ package br.com.compass.brazilianStates.controller;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -47,7 +49,7 @@ public class StateController {
 	
 	@PostMapping
 	@Transactional
-	public ResponseEntity<StateDTO> add(@RequestBody StateInput input, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<StateDTO> add(@RequestBody @Valid StateInput input, UriComponentsBuilder uriBuilder) {
 		State state = input.convertToState(stateRepository);
 		stateRepository.save(state);
 		
@@ -56,24 +58,33 @@ public class StateController {
 	}
 	
 	@GetMapping("/{id}")
-	public StateDTO check(@PathVariable Long id) {
-		State state = stateRepository.getById(id);
-		return new StateDTO(state);
+	public ResponseEntity<StateDTO> check(@PathVariable Long id) {
+		Optional<State> state = stateRepository.findById(id);
+		if(state.isPresent()) {
+			return ResponseEntity.ok(new StateDTO(state.get()));
+		}
+		return ResponseEntity.notFound().build();
 	}
 	
 	@PutMapping("/{id}")
 	@Transactional
-	public ResponseEntity<StateDTO> update(@PathVariable Long id, @RequestBody StateInput input){
-		State state = input.update(id, stateRepository);
-		
-		return ResponseEntity.ok(new StateDTO(state));
+	public ResponseEntity<StateDTO> update(@PathVariable @Valid Long id, @RequestBody StateInput input){
+		Optional<State> optionalState = stateRepository.findById(id);
+		if(optionalState.isPresent()) {
+			State state = input.update(id, stateRepository);
+			return ResponseEntity.ok(new StateDTO(state));
+		}
+		return ResponseEntity.notFound().build();	
 	}
 	
 	@DeleteMapping("/{id}")
 	@Transactional
 	public ResponseEntity<?> remove(@PathVariable Long id){
-		stateRepository.deleteById(id);
-		
-		return ResponseEntity.ok().build();
+		Optional<State> optionalState = stateRepository.findById(id);
+		if(optionalState.isPresent()) {
+			stateRepository.deleteById(id);
+			return ResponseEntity.ok().build();
+		}
+		return ResponseEntity.notFound().build();	
 	}
 }

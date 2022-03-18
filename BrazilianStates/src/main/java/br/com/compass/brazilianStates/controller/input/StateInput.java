@@ -1,15 +1,29 @@
 package br.com.compass.brazilianStates.controller.input;
 
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import br.com.compass.brazilianStates.model.State;
+
 import br.com.compass.brazilianStates.model.TypeRegion;
 import br.com.compass.brazilianStates.repository.StateRepository;
 
 public class StateInput {
 	
+	@NotNull @NotEmpty
 	private String name;
+	
+	@NotNull
 	private TypeRegion region = TypeRegion.NORTE; //Get back later to explore enum parameter
+	
+	@NotNull 
 	private int population;
+	
+	@NotNull @NotEmpty
 	private String capital;
+	
+	@NotNull 
 	private double area;
 	
 	public String getName() {

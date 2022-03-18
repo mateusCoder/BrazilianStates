@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;state&apos; in &apos;br.com.compass.brazilianStates.controller.StateController.update(...)&apos; to &apos;optionalState&apos;&#x0D;&#x0A;- Original project: &apos;brazilianStates&apos;&#x0D;&#x0A;- Original element: &apos;br.com.compass.brazilianStates.controller.StateController.update(Long, StateInput).state&apos;&#x0D;&#x0A;- Renamed element: &apos;state&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;state&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;br.com.compass.brazilianStates.controller{StateController.java[StateController~update~QLong;~QStateInput;@state!2591!2643!2607!2611!QOptional\&lt;QState;&gt;;!0!false" name="optionalState" references="true" stamp="1647608809896" version="1.0"/>
+</session>
