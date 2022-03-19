@@ -1,0 +1,118 @@
+openapi: 3.0.1
+info:
+  title: BrazilianStates API
+  description: API with CRUDS from Brazilian states.
+  version: 0.0.1
+  termsOfService: https://github.com/mateusCoder/BrazilianStates
+  contact:
+    name: Contate o Desenvolvedor
+    email: mateus.moraes0507@gmail.com
+    url: https://mail.google.com
+  license:
+    name: "Lincença: BSAv1"
+    url: https://github.com/mateusCoder/BrazilianStates
+externalDocs:
+  description: Detalhes da API
+  url: https://github.com/mateusCoder/BrazilianStates
+servers:
+- url: http://localhost:8080/api
+  description: API de Estados
+paths:
+  /states:
+      get:
+        summary: Lista todos os estados do Brasil.
+        responses:
+          200:
+            description: Sucesso
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Estados"
+      post: 
+        summary: Cadastra um estado
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+        responses:
+          201:
+            description: "Sucesso"
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Estado"
+  /states/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: integer
+      required: true
+    get:
+      summary: Exibe os dados de um estado pelo ID
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Estado"
+        404:
+          description: Estado não encontrado
+          content:
+            application/json:
+              example: "Not Found"
+    put:
+      operationId: putEstado
+      summary: Altera os dados de um estado pelo ID
+      requestBody:
+        description: Sucesso
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Estado"  
+      responses:
+        '200':
+          description: 'Book successfully updated'
+    delete:
+      operationId: deleteEstado
+      summary: Deletar os dados de um estado pelo ID
+      responses:
+        200:
+          description: Estado deletado
+components:
+    schemas:
+      Estado:
+        type: object
+        properties:
+          id:
+            type: integer
+          name: 
+            type: string
+          region:
+            type: string
+            enum:
+            - " NORTE"
+            - "NORDESTE"
+            - "SUL"
+            - "SUDESTE"
+            - "CENTRO_OESTE"
+          population:
+            type: integer
+          capital:
+            type: string
+          area:
+            type: number
+      Estados:
+        type: array
+        items:
+          $ref: "#/components/schemas/Estado"
+                      
+                      
