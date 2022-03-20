@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "08ad8457-0753-4635-b9db-8874fde486db",
+		"name": "BrazilianStates",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter By Region",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states?region=NORTE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states"
+					],
+					"query": [
+						{
+							"key": "region",
+							"value": "NORTE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Input State",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"State Test\",\r\n    \"region\":\"SUDESTE\",\r\n    \"population\": 20000,\r\n    \"capital\":\"Capital Test\",\r\n    \"area\": 32.5\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/states",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update State",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"State Test\",\r\n    \"region\":\"SUDESTE\",\r\n    \"population\": 20000,\r\n    \"capital\":\"Capital Test\",\r\n    \"area\": 32.5\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/states/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove State",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Error Test",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"\",\r\n    \"region\":\"SUL\",\r\n    \"population\": 20000,\r\n    \"capital\":\"Capital Test\",\r\n    \"area\": 32.5\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/states",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Error Test 404",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states/33",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states",
+						"33"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pagination Order By Population",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states?sort=population,desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "population,desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pagination Order By Area",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states?sort=area,desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "area,desc"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
