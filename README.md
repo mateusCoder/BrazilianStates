@@ -20,7 +20,7 @@ A pasta contém o arquivo BrazilianStatesApi de extensão yaml, com toda a docum
 
 <h3> Postman </h3>
 
-A pasta contém o arquivo BrazilianStatesRequests de extensão JSON, com as possiveis requests e tratamentos de erros desenvolvidos para a aplicação. Se preferir, é possível acessar o postman com as resquests pelo link da [workspace](https://app.getpostman.com/join-team?invite_code=83648d2e48c847a13eda852c3ffae191&target_code=4aa1ae8c811317facf32cd3dc347e7a9)
+A pasta contém o arquivo BrazilianStatesRequests de extensão JSON, com as possiveis requests e tratamentos de erros desenvolvidos para a aplicação. Se preferir, é possível acessar o postman com as resquests pelo link da [workspace](https://app.getpostman.com/join-team?invite_code=83648d2e48c847a13eda852c3ffae191&target_code=4aa1ae8c811317facf32cd3dc347e7a9).
 
 <h3> Fontes </h3>
 
