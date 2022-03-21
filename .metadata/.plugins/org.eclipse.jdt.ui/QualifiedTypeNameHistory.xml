@@ -49,7 +49,6 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="org.springframework.data.domain.PageRequest"/>
     <fullyQualifiedTypeName name="org.springframework.data.web.config.EnableSpringDataWebSupport"/>
-    <fullyQualifiedTypeName name="org.springframework.data.web.PageableDefault"/>
     <fullyQualifiedTypeName name="org.springframework.data.domain.Sort.Direction"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="org.springframework.data.domain.Pageable"/>
@@ -58,4 +57,5 @@
     <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
     <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.CorsRegistry"/>
     <fullyQualifiedTypeName name="org.springframework.web.util.pattern.PathPattern"/>
+    <fullyQualifiedTypeName name="org.springframework.data.web.PageableDefault"/>
 </qualifiedTypeNameHistroy>

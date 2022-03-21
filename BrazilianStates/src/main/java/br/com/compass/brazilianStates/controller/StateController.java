@@ -54,6 +54,18 @@ public class StateController {
 		}
 	}
 	
+	@GetMapping("/population")
+	public Page<StateDTO> listByPopulation(@PageableDefault( sort = "population", direction = Direction.DESC, size = 100) Pageable pagination){
+		Page<State> states = (Page<State>) stateRepository.findAll(pagination);
+		return StateDTO.convertToDto(states);
+	}
+	
+	@GetMapping("/area")
+	public Page<StateDTO> listByArea(@PageableDefault( sort = "area", direction = Direction.DESC, size = 100) Pageable pagination){
+		Page<State> states = (Page<State>) stateRepository.findAll(pagination);
+		return StateDTO.convertToDto(states);
+	}
+	
 	@PostMapping
 	@Transactional
 	public ResponseEntity<StateDTO> add(@RequestBody @Valid StateInput input, UriComponentsBuilder uriBuilder) {
