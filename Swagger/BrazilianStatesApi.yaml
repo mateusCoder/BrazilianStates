@@ -52,6 +52,48 @@ paths:
             content:
               application/json:
                 example: "Bad Request"
+  /states?region={region}:
+      parameters:
+        - name: region
+          in: path
+          schema:
+            type: string
+          required: true
+      get:
+        summary: Lista os estados do Brasil por maior população.
+        responses:
+          200:
+            description: Sucesso
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Estados"              
+  /states/population:
+      get:
+        summary: Lista os estados do Brasil por maior população.
+        responses:
+          200:
+            description: Sucesso
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Estados"
+  /states/area:
+      get:
+        summary: Lista os estados do Brasil por maior area.
+        responses:
+          200:
+            description: Sucesso
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Estados"
   /states/{id}:
     parameters:
     - name: id
@@ -124,10 +166,7 @@ components:
         items:
           $ref: "#/components/schemas/Estado"
       Error404:
-        description: Estado não encontrado
-        content:
-          application/json:
-            example: "Not Found"
-        
+        description: 'Estado não encontrado'
+
                       
                       
