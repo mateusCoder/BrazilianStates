@@ -262,6 +262,48 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Filter By Population",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states/population",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states",
+						"population"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter By Area",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states/area",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states",
+						"area"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
